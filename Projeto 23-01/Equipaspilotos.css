@@ -1,0 +1,119 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Pirata+One|Rubik:900');
+{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+body{
+/*  display: flex;*/    
+    justify-content:center;
+    align-items:center;
+    min-height: 100vh;
+    background-color:black !important;
+    color:white !important;
+}
+.container1{
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:100%;
+}
+.container1 .card{
+    position:relative;
+    width:600px;
+    height:350px;
+    margin:20px;
+    display:flex;
+    transition:0.5s;
+    justify-content:flex-start;
+    align-items:center;
+    background:linear-gradient(45deg,#1a2f3f,#7094ce)
+}
+.container1 .card img{
+    position:absolute;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    height:400px;
+    transition:0.5s;
+}
+.container1 .card:hover img{
+    left:71%;
+    height:500px;
+}
+.container1 .card .content{
+    position: relative;
+    width:50%;
+    left:5%;
+    padding:20px 20px 20px 40px;
+    opacity:0;
+    visibility:hidden;
+    transition:0.5s;
+}
+.container1 .card:hover .content{
+    left:-25%;
+    opacity:1;
+    visibility:visible;
+}
+.container1 .card .content h2{
+    color: #fff;
+    text-transform:uppercase;
+    font-size:2.2em;
+    line-height:1em;
+}
+.container1 .card .content p{
+    color:lightgray;
+}
+.container1 .card .content a{
+    position:relative;
+    color: #111;
+    background:#fff;
+    display:inline-block;
+    padding:10px 20px;
+    margin-top:10px;
+    text-decoration:none;
+    font-weight:700;
+}
+@media (max-width: 991px){
+    .container1 .card{
+        width:auto;
+        max-width:600px;
+        align-items:flex-start;
+    }
+    .container1 .card:hover{
+        height:600px;
+    }
+    .container1 .card:hover img{
+        left:50%;
+        height:350px;
+    }
+    .container1 .card .content{
+        width:100%;
+        left:0;
+        padding:40px;
+    }
+    .container1 .card:hover .content{
+    left:0;
+    opacity:1;
+    visibility:visible;
+    }
+}
+@media (max-width:767px){
+    .container1{
+        flex-direction:column;
+    }
+    .container1 .card{
+        width:auto;
+        max-width: 600px;
+        margin: 40px 20px;
+    }
+}
+@media (max-width:420px) {
+    .container1 .card .content{
+        padding:30px;
+    }
+    .container1 .card:hover img {
+        height:290px;
+    }
+}

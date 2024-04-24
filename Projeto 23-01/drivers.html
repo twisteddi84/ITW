@@ -1,0 +1,243 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ITW 2021/22 - Drivers List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="myCSS.css" />
+    <style>
+        .ui-menu {
+            background-color: white !important;
+            color: black !important;
+            z-index: 9999;
+            position: relative;
+            max-width: 220px;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger fixed-top" style="background-image: url('Images/Fundo.jpg')">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><img src="Images/F1-LOGO 2.png" style="height:55px;" /></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown fancy-link">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-current="page" href="constructors.html"><i class="fa fa-users"></i> Equipas</a>
+                        <div class="dropdown-menu">
+                            <a href="ConstrutorsAtuais.html" class="dropdown-item">Atuais</a>
+                            <a href="constructors.html" class="dropdown-item">Todas</a>
+                        </div>
+                    </li>
+                    <li class="nav-item fancy-link"><a class="nav-link active" aria-current="page" href="drivers.html"> <i class="fa fa-user"></i> Pilotos</a></li>
+                    <li class="nav-item fancy-link"><a class="nav-link" aria-current="page" href="circuits.html"> <i class="fa fa-map"></i> Circuitos</a></li>
+                    <li class="nav-item fancy-link"><a class="nav-link" aria-current="page" href="countries.html"> <i class="fa fa-flag"></i> Países</a></li>
+                    <li class="nav-item fancy-link"><a class="nav-link" aria-current="page" href="nationalities.html"> <i class="fa fa-flag-checkered"></i> Nacionalidades</a></li>
+                    <li class="nav-item fancy-link"><a class="nav-link" aria-current="page" href="races.html"> <i class="fa fa-car"></i> Corridas</a></li>
+                    <li class="nav-item fancy-link"><a class="nav-link" aria-current="page" href="seasons.html"> <i class="fa fa-clock-o"></i> Temporadas</a></li>
+                    <li class="nav-item dropdown fancy-link">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-current="page" href="constructors.html"><i class="fa fa-plus"></i> Mais</a>
+                        <div class="dropdown-menu">
+                            <a href="statistics.html" class="dropdown-item"><i class="fa fa-trophy"></i> Vencedor por Temporada</a>
+                            <a href="favorites.html" class="dropdown-item"><i class="fa fa-heart"></i> Favoritos</a>
+                            <a href="loja.html" class="dropdown-item"><i class="fa fa-gift"></i> Loja</a>
+                        </div>
+                    </li>
+
+                </ul>
+                <form class="form-inline" id="forms">
+                    <ul class="navbar-nav row" style="margin-left: 1px;">
+                        <li class="nav-item d-flex">
+                            <input id="searchbar" class="form-control" type="search" placeholder="Search" aria-label="Search" style="border: grey; border-style: solid; border-width: 2px;border-radius:15px;" name="searchbar" autocomplete="off">
+                            <button class="fa fa-search magnifyglass btn" type="submit" style=" margin: 0 0 0 0; border-style:none ; color:white;"></button>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <!-- Working Area -->
+    <div class="container">
+        <div class="border-bottom pt-4 pb-2 mb-3">
+            <h2 data-bind="text:displayName"></h2>
+        </div>
+        <!-- ko if:records().length > 0 -->
+        <div class="row small">
+            <p class=" col-4 mr-auto pt-2">
+                <span data-bind="html: 'Page: ' + currentPage() + ' of ' + totalPages()"></span><br />
+                <span data-bind="html: 'Drivers: '+ fromRecord() + '-' + toRecord() + ' of ' + totalRecords()"></span>
+            </p>
+            <div class="col-8 my-0 pt-3">
+                <ul class="pagination float-end">
+                    <!-- ko if: currentPage() > 5 && totalPages() > 10 -->
+                    <li class="page-item float-end"><a class="page-link" title="First Page" data-bind="attr: { href: './drivers.html?page=' + '1',  rel:'prev'}">⇤</a></li>
+                    <li class="page-item float-end"><a class="page-link" title="Previous Page" data-bind="attr: { href: './drivers.html?page=' + previousPage(),  rel:'prev'}">←</a></li>
+                    <!-- /ko -->
+                    <!-- ko foreach: pageArray()-->
+                    <!-- ko if:$data == $parent.currentPage() -->
+                    <li class="active page-item"><a class="page-link" data-bind="attr: { title:'Current Page ' + $data }, text: $data" style="background-color: #970603; border:1px solid #970603;"></a></li>
+                    <!-- /ko -->
+                    <!-- ko if:$data != $parent.currentPage() -->
+                    <li class="page-item"><a class="page-link" data-bind="attr: { href: './drivers.html?page=' + $data, title:'Goto Page ' + $data }, text:$data"></a></li>
+                    <!-- /ko -->
+                    <!-- /ko -->
+                    <!-- ko if: currentPage() < totalPages() - 4 && totalPages() > 9 -->
+                    <li class="page-item"><a class="page-link" title="Next Page" data-bind="attr: { href: './drivers.html?page=' + nextPage(), rel:'next' }">→</a></li>
+                    <li class="page-item"><a class="page-link" title="Last Page" data-bind="attr: { href: './drivers.html?page=' + totalPages() }">⇥</a></li>
+                    <!-- /ko -->
+                </ul>
+            </div>
+        </div>
+
+        <!-- /ko -->
+        <table class="table table-sm small">
+            <thead class="bg-dark text-light">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Nationality</th>
+                    <th scope="col" class="text-right"></th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: records">
+                <tr>
+                    <td class="align-middle" data-bind="text:DriverId"></td>
+                    <td class="align-middle" data-bind="text:Name"></td>
+                    <td class="align-middle" data-bind="text:Nationality"></td>
+                    <td class="text-end">
+                        <a class="btn btn-default btn-light btn-sm" data-bind="attr: { href:'./driverDetails.html?id=' + DriverId }"><i class="fa fa-eye" title="Selecione para ver detalhes"></i></a>
+                        <button class="btn btn-default btn-sm btn-outline-danger btn-favourite" data-bind="click: () => $parent.toggleFavourite(DriverId), attr : { 'id': 'favourite_' + DriverId }">
+                            <i data-bind="attr : { 'class' : $parent.favourites().includes(DriverId) ? 'fa fa-heart' : 'fa fa-heart-o'}" class="fa fa-heart-o" title="Selecione para adicionar aos favoritos"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-light">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        <img src="Images/F1-LOGO 2.png" height="30" /> Loading data...
+                    </h5>
+                </div>
+                <div class="modal-body text-center">
+                    <i class="fa fa-spin fa-3x fa-refresh" style="color:#212529;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Work Area -->
+    <footer class="text-center text-white" style="background-color: #dc3545; margin: 0 0 0 0; background-image: url('Images/Fundo.jpg') ">
+        <!-- Grid container -->
+        <div class="container">
+            <div class="row" style="height:12px;"></div>
+            <section class="mb-5">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-8">
+                        <p>
+                            Fórmula 1 - Melhor Competição do Mundo
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section class="text-center mb-5">
+                <a href="" class="text-white me-4">
+                    <i class="fa fa-facebook-square"></i>
+                </a>
+                <a href="" class="text-white me-4">
+                    <i class="fa fa-twitter-square"></i>
+                </a>
+                <a href="" class="text-white me-4">
+                    <i class="fa fa-instagram"></i>
+                </a>
+            </section>
+            <!-- Section: Social -->
+
+            <div class="row">
+                <section class="mb-5">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-lg-8">
+                            <a class="text-white" href="Ajuda.html">AJUDA</a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="text-center p-3 "
+             style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2022 Copyright:
+            <a class="text-white" href="http://www.ua.pt">UNIVERSIDADE DE AVEIRO</a>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js" integrity="sha256-hlKLmzaRlE8SCJC1Kw8zoUbU8BxA+8kR3gseuKfMjxA=" crossorigin="anonymous"></script>
+    <script src="drivers.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            const api_url = "http://192.168.160.58/Formula1/api/Search/Drivers";
+
+            $("#searchbar").autocomplete({
+                minLength: 1,
+                source: function (request, response) {
+                    $.ajax({
+                        type: "GET",
+                        url: api_url,
+                        data: {
+                            q: $('#searchbar').val().toLowerCase()
+                        },
+                        success: function (data) {
+                            if (!data.length) {
+                                var result = [{
+                                    label: 'Sem resultados',
+                                    value: response.term,
+                                }];
+                                response(result);
+                            } else {
+
+                                var nData = $.map(data, function (value, key) {
+                                    return {
+                                        label: value.Name,
+                                        value: value.DriverId,
+                                    }
+                                });
+                                results = $.ui.autocomplete.filter(nData, request.term);
+                                response(results);
+                            }
+                        },
+                        error: function () {
+                            alert("error!");
+                        }
+                    })
+                },
+                select: function (event, ui) {
+                    event.preventDefault();
+                    $("#searchbar").val(ui.item.label);
+                    window.location.href = "./driverDetails.html?id=" + ui.item.value;
+
+
+                    // h.loadTitleModal(ui.item.value)
+                },
+                focus: function (event, ui) {
+                    $("#searchbar").val(ui.item.label);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

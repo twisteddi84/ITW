@@ -1,0 +1,11 @@
+﻿main {
+    margin: 60px 0 72px 0;
+    background-color:black;
+    color:white;
+}
+.card{
+    background-color:white;
+}
+.card:hover{
+    background-color:lightgrey;
+}

@@ -1,0 +1,34 @@
+﻿
+.carouselimg1 {
+    margin: 0px;
+    padding: 0px;
+    height: 540px;
+    margin-bottom: 0px;
+    background: transparent;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('Images/Carousel1.jpg');
+}
+.carouselimg2 {
+    margin: 0px;
+    padding: 0px;
+    height: 540px;
+    margin-bottom: 0px;
+    background: transparent;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('Images/Carousel2.jpg');
+}
+.carouselimg3 {
+    margin: 0px;
+    padding: 0px;
+    height: 540px;
+    margin-bottom: 0px;
+    background: transparent;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('Images/Carousel 3.jpg');
+}
